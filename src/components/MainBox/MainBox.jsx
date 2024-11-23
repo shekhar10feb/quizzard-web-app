@@ -10,6 +10,7 @@ import QuestionTypes from "../QuestionTypes/QuestionTypes";
 import QuestionOptions from "../QuestionOptions/QuestionOptions";
 import { MdOutlineClose } from "react-icons/md";
 import parse from "html-react-parser";
+import image1 from "../../assets/image1.png";
 
 const MainBox = ({ box }) => {
   const {
@@ -74,7 +75,7 @@ const MainBox = ({ box }) => {
   );
 
   return (
-    <div className="w-full h-full flex">
+    <div className="w-full h-full flex justify-center items-center">
       <div className="w-full h-full flex lg:justify-start items-center flex-col p-1">
         <div className="w-full h-full flex justify-start items-center lg:flex-row flex-col overflow-hidden">
           <div className="w-full h-full flex justify-center items-center flex-col">
@@ -104,7 +105,7 @@ const MainBox = ({ box }) => {
                       </div>
                       <div className="w-full flex justify-start items-center my-2">
                         <img
-                          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT43b0GAgw-W5S21KVl3qvVKYf___TDZ2kbow&s"
+                          src={image1}
                           alt=""
                           className="lg:w-10 w-7 flex justify-center items-center rounded-full object-cover aspect-square mr-2"
                         />
@@ -152,13 +153,13 @@ const MainBox = ({ box }) => {
               style={{ backgroundColor: `${colors[box.id - 1]}` }}
             >
               {/* Question Div */}
-              <div className="w-full h-2/6 flex justify-between items-center flex-row">
+              <div className="w-full h-2/6 flex justify-between lg:items-center items-start flex-row">
                 {box.image_for_question ? (
-                  <div className="w-full h-full flex justify-between items-center flex-row">
+                  <div className="w-full lg:h-full flex justify-between items-center flex-row">
                     <img
                       src={box.image_for_question ? box.image_for_question : ""}
                       alt=""
-                      className="w-auto h-full rounded-lg border-none mr-2"
+                      className="w-auto h-full md:flex hidden rounded-lg border-none mr-2"
                     />
                     <div className="w-full h-full border border-white rounded-lg">
                       <Tiptap

@@ -109,10 +109,6 @@ export const BoxProvider = ({ children }) => {
     setShowTitlebox("none");
   };
 
-  if (resultedImage) {
-    console.log("resultedImage: ", resultedImage);
-  }
-
   return (
     <BoxContext.Provider
       value={{

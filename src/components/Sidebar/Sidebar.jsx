@@ -46,14 +46,14 @@ const Sidebar = () => {
           return (
             <div
               key={box.id}
-              className="lg:w-11/12 w-full flex justify-start items-start lg:my-1 lg:mx-0 mx-2"
+              className="lg:w-11/12 w-1/6 flex justify-start items-start lg:my-1 lg:mx-0 mx-2"
               draggable
               onDragStart={() => handleDragStart(box.id)}
               onDragOver={handleDragOver}
               onDrop={() => handleDrop(box.id)}
               onClick={() => add_zIndex(box.id)}
             >
-              <div className="w-1/12 h-full flex justify-center items-start">
+              <div className="w-1/12 h-full flex justify-center items-start mr-[2px]">
                 <p className="text-sm text-gray-500">{box.id}</p>
               </div>
               <div
@@ -86,7 +86,7 @@ const Sidebar = () => {
           <FaPlus />
         </button>
       </div>
-      <div className="w-full lg:flex hidden justify-end items-center flex-col absolute bottom-0 py-2">
+      <div className="w-full lg:flex hidden justify-end items-center flex-col absolute bottom-0 py-2 lg:text-sm">
         <button className="w-11/12 flex justify-center items-center rounded bg-white text-black p-2 mb-1 border border-black cursor-pointer">
           <span className="mr-2">
             <FaSearch />
