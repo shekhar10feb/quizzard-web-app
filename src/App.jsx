@@ -1,5 +1,5 @@
 import React from "react";
-import "react-image-crop/dist/ReactCrop.css";
+// import "react-image-crop/dist/ReactCrop.css";
 import { BoxProvider } from "./components/BoxContext/BoxContext";
 import Sidebar from "./components/Sidebar/Sidebar";
 import Header from "./components/Header/Header";
