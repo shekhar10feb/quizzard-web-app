@@ -11,6 +11,7 @@ const Sidebar = () => {
     boxes,
     setBoxes,
     add_zIndex,
+    activeFunction,
     id_for_number_of_questions,
     activeDiv,
   } = useContext(BoxContext);
@@ -51,7 +52,7 @@ const Sidebar = () => {
               onDragStart={() => handleDragStart(box.id)}
               onDragOver={handleDragOver}
               onDrop={() => handleDrop(box.id)}
-              onClick={() => add_zIndex(box.id)}
+              onClick={() => activeFunction(box.id)}
             >
               <div className="w-1/12 h-full flex justify-center items-start mr-[2px]">
                 <p className="text-sm text-gray-500">{box.id}</p>

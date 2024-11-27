@@ -61,10 +61,6 @@ const TiptapEditorForOption = ({
     }
   };
 
-  const handleEditorContent = () => {
-    const html = editor.getHTML();
-  };
-
   // Handle button click to trigger color input click
   const handleColorChooseClick = () => {
     colorInputRef.current.click(); // Programmatically click the color input
@@ -134,7 +130,7 @@ const TiptapEditorForOption = ({
           <LuSuperscript />
         </button>
         <button onClick={() => handleDeleteOption(optionId)}>
-        <MdOutlineDeleteOutline />
+          <MdOutlineDeleteOutline />
         </button>
       </div>
       <div className="w-full h-5/6 flex border-none">

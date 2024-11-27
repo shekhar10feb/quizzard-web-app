@@ -5,14 +5,11 @@ import parse from "html-react-parser";
 
 const QuestionOptions = ({
   item,
-  box,
   handleCheckboxChange,
   handleDeleteOption,
 }) => {
   const [option_for_question, setOption_for_question] = useState("");
-  const { updateBox, colors_for_option, inputRef, boxes } =
-    useContext(BoxContext);
-  const [updatedOption, setUpdatedOption] = useState(box.options);
+  const { colors_for_option, inputRef } = useContext(BoxContext);
 
   const handleEditorContentSaveForOption = (html) => {
     const con = parse(html);

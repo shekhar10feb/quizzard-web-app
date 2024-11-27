@@ -1,4 +1,4 @@
-import React, { useState, useRef, useContext } from "react";
+import React, { useState, useRef } from "react";
 import { FaBold } from "react-icons/fa";
 import { GoItalic } from "react-icons/go";
 import { FaStrikethrough } from "react-icons/fa6";
@@ -9,19 +9,16 @@ import { LuSubscript } from "react-icons/lu";
 import { LuSuperscript } from "react-icons/lu";
 import { RiImageAddLine } from "react-icons/ri";
 import { IoCloseSharp } from "react-icons/io5";
-import { BiImageAdd } from "react-icons/bi";
 import { RxImage } from "react-icons/rx";
-import { BoxContext } from "../BoxContext/BoxContext";
-import ImageCropper from "./ImageCropper/ImageCropper";
+import ImageCropper from "./ImageCropper";
 
 const TiptapButtons = ({ editor, box }) => {
   const [color, setColor] = useState("#ffffff"); // State to track selected color
   const [showImageCropperDiv, setShowImageCropperDiv] = useState(false);
+  const [image, setImage] = useState(null);
   const colorInputRef = useRef(null); // Create a ref to the input element
-  const addImageRef = useRef(null); // Create a ref to the input element
   const insertImageRef = useRef(null);
-
-  const { setResultedImage } = useContext(BoxContext);
+  const resetButtonRef = useRef(null);
 
   const setTextColor = (newColor) => {
     if (editor) {
@@ -35,12 +32,12 @@ const TiptapButtons = ({ editor, box }) => {
     colorInputRef.current.click(); // Programmatically click the color input
   };
 
-  const addImage = () => {
-    addImageRef.current.click(); // Programmatically click the color input
-  };
-
   const insertButton = () => {
     insertImageRef.current.click();
+  };
+
+  const resetButton = () => {
+    resetButtonRef.current.click();
   };
 
   return (
@@ -111,59 +108,50 @@ const TiptapButtons = ({ editor, box }) => {
       </button>
       {showImageCropperDiv && (
         <div className="w-full h-full flex justify-center items-center fixed left-0 top-0 bg-[#000000ce] text-base z-20">
-          <div className="lg:max-w-lg w-4/6 h-auto flex justify-center items-center flex-col text-black bg-white lg:p-4 p-2 border-none lg:rounded-md rounded-sm">
+          <div className="lg:w-4/6 w-[95%] h-auto flex justify-center items-center flex-col text-black bg-white lg:p-4 p-2 lg:rounded-md rounded-sm">
             <span
-              className="w-full flex justify-end items-center cursor-pointer"
+              className="w-full flex justify-end items-center lg:text-base text-sm cursor-pointer"
               onClick={() => setShowImageCropperDiv(!showImageCropperDiv)}
             >
               <IoCloseSharp />
             </span>
-            <div className="w-full flex justify-start items-start mb-3">
-              <div className="w-auto text-3xl rounded-full bg-cyan-400 text-white p-2">
-                <RxImage />
-              </div>
-              <div className="w-auto flex justify-start items-start flex-col pl-2">
-                <h2 className="text-lg font-semibold">Add Image</h2>
-                <p className="text-xs text-gray-500">
-                  Use Ctrl + V to paste image from your clipboard
-                </p>
-              </div>
-            </div>
-
-            <div className="w-full justify-start items-start flex-row border-2 border-dashed border-blue-600 p-1 rounded-md">
-              <div className="w-full flex justify-between items-center flex-row">
-                <span className="w-auto flex justify-start items-center flex-row text-3xl">
-                  <BiImageAdd />
-                  <p className="text-xs text-gray-500">
-                    <u className="cursor-pointer" onClick={addImage}>
-                      Upload
-                    </u>{" "}
-                    or drop a file right here
+            <div className="w-full flex justify-start items-start flex-col mb-3">
+              <div className="w-full flex justify-start items-start">
+                <div className="w-auto lg:text-3xl md:text-2xl text-xl rounded-full bg-cyan-400 text-white p-2">
+                  <RxImage />
+                </div>
+                <div className="w-auto flex justify-start items-start flex-col pl-2">
+                  <h2 className="lg:text-lg md:text-base text-[1rem] font-semibold">
+                    Add Image
+                  </h2>
+                  <p className="w-full text-start md:text-xs sm:text-[0.8rem] text-[0.67rem] text-gray-500">
+                    Use Ctrl + V to paste image from your clipboard
                   </p>
-                </span>
-                <span className="w-auto flex justify-start items-center">
-                  <p className="text-xs text-gray-500">JPEG, JPG, PNG</p>
-                </span>
+                </div>
               </div>
-            </div>
-
-            <div className="w-full flex justify-center items-center bg-[#000000ce] my-3">
               <ImageCropper
                 box={box}
-                addImageRef={addImageRef}
+                image={image}
+                setImage={setImage}
                 insertImageRef={insertImageRef}
-                setResultedImage={setResultedImage}
+                resetButtonRef={resetButtonRef}
               />
             </div>
             <div
-              className="w-full"
+              className="w-full flex justify-evenly items-center"
               onClick={() => setShowImageCropperDiv(!showImageCropperDiv)}
             >
               <button
-                className="w-full flex justify-center items-center text-white bg-cyan-400 p-1 rounded-md shadow-md cursor-pointer"
+                className="w-5/12 flex justify-center items-center text-white md:text-lg sm:text-base text-sm bg-cyan-400 p-1 rounded-md shadow-md cursor-pointer"
                 onClick={insertButton}
               >
                 Insert
+              </button>
+              <button
+                className="w-5/12 flex justify-center items-center text-white md:text-lg sm:text-base text-sm bg-cyan-400 p-1 rounded-md shadow-md cursor-pointer"
+                onClick={resetButton}
+              >
+                Reset
               </button>
             </div>
           </div>

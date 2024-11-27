@@ -150,7 +150,7 @@ const AddInfo = ({ box }) => {
               </select>
             </div>
             <div className="md:w-1/2 w-full sm:h-[270px] h-[150px] flex justify-center items-center sm:pl-1 sm:my-0 my-2">
-              <div className="w-full h-full flex justify-center items-center border border-black rounded-md">
+              <div className="w-full h-full flex justify-center items-center rounded-md">
                 <div
                   className="w-full h-full justify-center items-center flex-col bg-black text-white cursor-pointer"
                   style={{ display: showImage }}

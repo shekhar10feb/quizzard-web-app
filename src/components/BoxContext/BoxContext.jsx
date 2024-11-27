@@ -101,6 +101,10 @@ export const BoxProvider = ({ children }) => {
     setActiveDiv(id); // Set the clicked div as active
   };
 
+  const activeFunction = (id) => {
+    setActiveDiv(id); // Set the clicked div as active
+  };
+
   const handleQuizTitle = () => {
     setShowTitlebox("flex");
   };
@@ -117,6 +121,7 @@ export const BoxProvider = ({ children }) => {
         colors,
         colors_for_option,
         add_zIndex,
+        activeFunction,
         addBox,
         updateBox,
         inputRef,
